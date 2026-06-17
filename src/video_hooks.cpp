@@ -184,7 +184,7 @@ int render_CCalVideoRenderer_Render_8296AB38_Hook(uint32_t this_ptr, uint32_t ul
     if (!y_row || !y_h || !u_row || !u_h || !v_row || !v_h) return 0;
 
     auto is_valid_plane_ptr = [](uint32_t p) -> bool {
-        return (p & 0x3u) == 0 && p >= 0x20000000u && p < 0x80000000u;
+        return (p & 0x3u) == 0 && p >= 0x40000000u && p < 0x80000000u;
     };
     
     uint32_t y_src = 0, u_src = 0, v_src = 0;
@@ -217,6 +217,11 @@ int render_CCalVideoRenderer_Render_8296AB38_Hook(uint32_t this_ptr, uint32_t ul
         }
     }
 
+    if (!y_src || !u_src || !v_src) return 0;
+    if ((uint64_t)y_src + (uint64_t)y_h * y_str > 0x4B999999u) return 0;
+    if ((uint64_t)u_src + (uint64_t)u_h * u_str > 0x4B999999u) return 0;
+    if ((uint64_t)v_src + (uint64_t)v_h * v_str > 0x4B999999u) return 0;
+
     YUVFrame frame;
     frame.y_width  = y_row;  frame.y_height = y_h;
     frame.u_width  = u_row;  frame.u_height = u_h;
@@ -224,9 +229,6 @@ int render_CCalVideoRenderer_Render_8296AB38_Hook(uint32_t this_ptr, uint32_t ul
 
     frame.y.resize(y_row * y_h);
     for (uint32_t r = 0; r < y_h; r++){
-        if(y_src + r * y_str > 0x4B999999) {
-            return 0;
-        }
         std::memcpy(frame.y.data() + r * y_row, mem2 + y_src + r * y_str, y_row);
     }
 
