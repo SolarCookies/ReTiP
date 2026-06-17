@@ -1,2 +1,4 @@
 # ReTiP
-A 0.8+ rexglue version of ReTiP with Native Renderer
+
+A 0.8+ rexglue version of ReTiP with Native Renderer using the Plume RHI
+
