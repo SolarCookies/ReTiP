@@ -1,17 +1,4 @@
 [functions]
-#Hookies since im too lazy to make another toml file.. :)
-0x829690D8 = {name = "rex_render_CCalGraphicsRenderer_Create_829690D8"}
-0x8296A838 = {name = "rex_render_CCalVideoRenderer_Close_8296A838"}
-0x8296A940 = {name = "rex_render_CCalVideoRenderer_SetMediaInfo_8296A940"}
-0x8296AB38 = {name = "rex_render_CCalVideoRenderer_Render_8296AB38"}
-0x8296AF30 = {name = "rex_render_CCalVideoRenderer_InitializeShaders_8296AF30"}
-0x8296A748 = {name = "rex_render_CCalVideoRenderer_InitializeVertices_8296A748"}
-0x8265A2A8 = {name = "rex_render_D3DDevice_Clear_8265A2A8"}
-0x82657F08 = {name = "rex_render_D3DDevice_SetScissorRect_82657F08"}
-0x82658000 = {name = "rex_render_IDirect3DDevice9_SetViewport_82658000"}
-0x8266FBB0 = {name = "rex_render_IDirect3DDevice9_Swap_8266FBB0"}
-0x826703E0 = {name = "rex_render_D3DDevice_Present_826703E0"}
-
 #CTX.CTR.U32
 0x826878C0 = {}
 0x825F3008 = {}

@@ -17,8 +17,9 @@ plume_shaders_init()
 # Sources
 set(RETIP_SOURCES
     src/main.cpp
-    src/plume_renderer.cpp
-    src/video_hooks.cpp
+    src/Renderer/plume_renderer.cpp
+    src/Renderer/video_hooks.cpp
+    src/Debug/trace_hooks.cpp
 )
 
 if(WIN32)

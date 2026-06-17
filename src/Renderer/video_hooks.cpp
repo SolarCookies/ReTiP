@@ -44,25 +44,26 @@ static inline void write_be_u32(uint8_t* membase, uint32_t guest_addr, uint32_t 
     std::memcpy(membase + guest_addr, &be, 4);
 }
 
+#ifdef PlumeRendererEnabled
 PlumeRenderer* g_video_renderer = nullptr;
 
 REX_PPC_EXTERN_IMPORT(render_D3DDevice_Clear_8265A2A8);
 int render_D3DDevice_Clear_8265A2A8_Hook(uint32_t /*device*/) {
     return 0;
 }
-REX_PPC_HOOK(render_D3DDevice_Clear_8265A2A8);
+//REX_PPC_HOOK(render_D3DDevice_Clear_8265A2A8);
 
 REX_PPC_EXTERN_IMPORT(render_D3DDevice_SetScissorRect_82657F08);
 int render_D3DDevice_SetScissorRect_82657F08_Hook(uint32_t /*device*/, uint32_t /*rect_ptr*/) {
     return 0;
 }
-REX_PPC_HOOK(render_D3DDevice_SetScissorRect_82657F08);
+//REX_PPC_HOOK(render_D3DDevice_SetScissorRect_82657F08);
 
 REX_PPC_EXTERN_IMPORT(render_IDirect3DDevice9_SetViewport_82658000);
 int render_IDirect3DDevice9_SetViewport_82658000_Hook(uint32_t /*device*/, uint32_t /*viewport_ptr*/) {
     return 0;
 }
-REX_PPC_HOOK(render_IDirect3DDevice9_SetViewport_82658000);
+//REX_PPC_HOOK(render_IDirect3DDevice9_SetViewport_82658000);
 
 REX_PPC_EXTERN_IMPORT(render_IDirect3DDevice9_Swap_8266FBB0);
 int render_IDirect3DDevice9_Swap_8266FBB0_Hook(uint32_t /*device*/, uint32_t /*front_buffer*/, uint32_t /*params*/) {
@@ -74,7 +75,7 @@ REX_PPC_EXTERN_IMPORT(render_D3DDevice_Present_826703E0);
 int render_D3DDevice_Present_826703E0_Hook(uint32_t /*device*/, uint32_t /*a2*/, uint64_t /*a3*/) {
     return 0;
 }
-REX_PPC_HOOK(render_D3DDevice_Present_826703E0);
+//REX_PPC_HOOK(render_D3DDevice_Present_826703E0);
 
 REX_PPC_EXTERN_IMPORT(render_CCalGraphicsRenderer_Create_829690D8);
 int render_CCalGraphicsRenderer_Create_829690D8_Hook(uint32_t /*this_ptr*/) {
@@ -88,7 +89,7 @@ int render_CCalVideoRenderer_Close_8296A838_Hook(uint32_t /*this_ptr*/) {
     //REXLOG_ERROR("[video] CCalVideoRenderer::Close called – stubbed");
     return 0;
 }
-REX_PPC_HOOK(render_CCalVideoRenderer_Close_8296A838);
+//REX_PPC_HOOK(render_CCalVideoRenderer_Close_8296A838);
 
 REX_PPC_EXTERN_IMPORT(render_CCalVideoRenderer_InitializeShaders_8296AF30);
 int render_CCalVideoRenderer_InitializeShaders_8296AF30_Hook(uint32_t /*this_ptr*/) {
@@ -247,3 +248,4 @@ int render_CCalVideoRenderer_Render_8296AB38_Hook(uint32_t this_ptr, uint32_t ul
     return 0;
 }
 REX_PPC_HOOK(render_CCalVideoRenderer_Render_8296AB38);
+#endif

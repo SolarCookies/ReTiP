@@ -1,0 +1,6 @@
+[[midasm_hook]]
+address = 0x821C430C
+name = "SkipIntroVideos_hook"
+registers = []
+after_instruction = true
+jump_address_on_true = 0x821C4354

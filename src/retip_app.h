@@ -9,8 +9,10 @@
 #include <rex/rex_app.h>
 #include <rex/ui/window_win.h>
 
-#include "plume_renderer.h"
-#include "video_hooks.h"
+#include "Renderer/plume_renderer.h"
+#include "Renderer/video_hooks.h"
+#include "Debug/trace_hooks.h"
+
 
 class RetipApp : public rex::ReXApp {
  public:
@@ -26,29 +28,37 @@ class RetipApp : public rex::ReXApp {
   // void OnPostInitLogging() override {}
   void OnPreSetup(rex::RuntimeConfig &config) override {
     // Disable the xenos GPU, We will be using plume instead.
+    #ifdef PlumeRendererEnabled
     config.graphics = nullptr;
+    #endif
   }
   // void OnLoadXexImage(std::string& xex_image) override {}
   // void OnPostLoadXexImage() override {}
   void OnPostSetup() override {
     auto* win32_window = static_cast<rex::ui::Win32Window*>(window());
+    #ifdef PlumeRendererEnabled
     if (win32_window && win32_window->hwnd()) {
       plume_renderer_ = std::make_unique<PlumeRenderer>(win32_window->hwnd());
       plume_renderer_->Start();
       g_video_renderer = plume_renderer_.get();
     }
+    #endif
   }
   void OnShutdown() override {
+    #ifdef PlumeRendererEnabled
     g_video_renderer = nullptr;
     if (plume_renderer_) {
       plume_renderer_->Stop();
       plume_renderer_.reset();
     }
+    #endif
   }
   void OnResize(rex::ui::UISetupEvent&) override {
+    #ifdef PlumeRendererEnabled
     if (plume_renderer_) {
       plume_renderer_->NotifyResize();
     }
+    #endif
   }
   // void OnCreateDialogs(rex::ui::ImGuiDrawer* drawer) override {}
   // std::unique_ptr<rex::ui::ImGuiDialog> CreateAchievementsOverlay() override;

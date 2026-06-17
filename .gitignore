@@ -1,0 +1,15 @@
+out/build/win-amd64-relwithdebinfo/.ninja_deps
+out/build/win-amd64-relwithdebinfo/.ninja_log
+/out/build/win-amd64-relwithdebinfo/.vs
+/out/build/win-amd64-relwithdebinfo/_deps
+*.dll
+*.ninja
+out/build/win-amd64-relwithdebinfo/cmake_install.cmake
+out/build/win-amd64-relwithdebinfo/CMakeCache.txt
+/out/build/win-amd64-relwithdebinfo/CMakeFiles
+/out/build/win-amd64-relwithdebinfo/logs
+/out/build/win-amd64-relwithdebinfo/plume_tools
+*.exe
+*.pdb
+out/build/win-amd64-relwithdebinfo/retip.toml
+/out/build/win-amd64-relwithdebinfo/thirdparty
